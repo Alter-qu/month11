@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+<body>
+<div>
+    <h3>欢迎你{$name}</h3>
+    <a href="{:url('Test/logout')}">退出登录</a>
+</div>
+<div>
+    <form action="{:url('Test/search')}" method="post">
+        {:token()}
+        <input type="text" name="search">
+        <input type="submit" value="查询">
+    </form>
+    <form action="{:url('Test/save')}" method="post" enctype="multipart/form-data">
+        <table class="table">
+            {:token()}
+            <tr>
+                <td>分类</td>
+                <td><input type="text" name="type"></td>
+            </tr>
+            <tr>
+                <td>标题</td>
+                <td><input type="text" name="title"></td>
+            </tr>
+            <tr>
+                <td>图片</td>
+                <td><input type="file" name="image"></td>
+            </tr>
+            <tr>
+                <td>评论数</td>
+                <td><input type="number" name="discuss"></td>
+            </tr>
+        </table>
+        <input type="submit" value="上传图片">
+    </form>
+    <div>
+        <h4>已经上传的图片</h4>
+        {volist name="list" id="vo"}
+        <ul type="none" style="float: left" class="">
+            <li><img src="/uploads/{$vo.img}" style="height: 200px;width: 160px"></li>
+            <li>{$vo.title}</li>
+            <li>{$vo.type}</li>
+            <li>{$vo.discuss}条评论</li>
+        </ul>
+        {/volist}
+        <div>{$list->render()}</div>
+
+    </div>
+
+</div>
+</body>
+</html>

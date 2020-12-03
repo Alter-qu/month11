@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h4>搜索到该用户上传的图片</h4>
+    {volist name="list" id="vo"}
+    <ul type="none" style="float: left" class="">
+        <li><img src="/uploads/{$vo.img}" style="height: 200px;width: 160px"></li>
+        <li>{$vo.title}</li>
+        <li>{$vo.type}</li>
+        <li>{$vo.discuss}条评论</li>
+    </ul>
+    {/volist}
+    <div>{$list->render()}</div>
+
+</div>
+</body>
+</html>
